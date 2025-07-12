@@ -1,15 +1,15 @@
-import {
-  ApplicationConfig,
-  provideZoneChangeDetection,
-  provideBrowserGlobalErrorListeners,
-} from '@angular/core';
+import { provideFileRouter, requestContextInterceptor } from '@analogjs/router';
 import {
   provideHttpClient,
   withFetch,
   withInterceptors,
 } from '@angular/common/http';
+import {
+  type ApplicationConfig,
+  provideBrowserGlobalErrorListeners,
+  provideZoneChangeDetection,
+} from '@angular/core';
 import { provideClientHydration } from '@angular/platform-browser';
-import { provideFileRouter, requestContextInterceptor } from '@analogjs/router';
 
 export const appConfig: ApplicationConfig = {
   providers: [

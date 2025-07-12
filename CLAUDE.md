@@ -8,6 +8,7 @@ This is an NX monorepo containing a personal blog/portfolio built with:
 - **Angular 20** - Modern Angular with standalone components and new control flow syntax (@if, @for)
 - **Analog.js** - Meta-framework for Angular providing SSR, file-based routing, and Vite integration
 - **Tailwind CSS v4** - Utility-first CSS framework with modern PostCSS plugin
+- **Biome v2.1** - Fast formatter and linter replacing ESLint/Prettier
 - **NX** - Monorepo tooling for build system and development workflow
 
 ## Key Architecture
@@ -24,6 +25,13 @@ This is an NX monorepo containing a personal blog/portfolio built with:
 - **TypeScript config**: `tailwind.config.ts` with proper v4 structure
 - **Style imports**: Styles imported in `main.ts` for Analog.js compatibility
 
+### Code Quality Setup
+- **Biome v2.1**: Fast formatter and linter configured in `biome.json`
+- **Single quotes**: Consistent with Angular and modern TypeScript practices
+- **2-space indentation**: Standard for Angular projects
+- **Import organization**: Automatic import sorting and type imports
+- **No ESLint/Prettier**: Replaced with unified Biome toolchain
+
 ## Common Commands
 
 ### Development
@@ -34,9 +42,13 @@ nx serve blog               # Alternative dev server command
 nx build blog               # Alternative build command
 ```
 
-### Testing and Quality
+### Code Quality
 ```bash
-nx lint blog                # Lint the blog application
+npm run lint                # Check linting and formatting with Biome
+npm run lint:fix            # Auto-fix linting and formatting issues
+npm run format              # Format code only
+nx lint blog                # Lint specific blog application
+nx lint:fix blog            # Auto-fix specific blog application
 nx test blog                # Run tests with Vitest
 ```
 
@@ -85,4 +97,5 @@ npm run docker:run         # Run container on port 8080
 - Always use Angular 20 modern syntax (not Angular 21)
 - Minimize arbitrary Tailwind values - use standard utility classes
 - Ensure SSR compatibility for browser APIs
+- Run `npm run lint:fix` before committing to ensure code quality
 - Test builds before committing changes

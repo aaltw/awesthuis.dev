@@ -1,5 +1,11 @@
-import { Component, signal, OnInit, PLATFORM_ID, inject } from '@angular/core';
 import { isPlatformBrowser } from '@angular/common';
+import {
+  Component,
+  inject,
+  type OnInit,
+  PLATFORM_ID,
+  signal,
+} from '@angular/core';
 
 @Component({
   selector: 'blog-home',
@@ -44,15 +50,17 @@ export default class HomeComponent implements OnInit {
   ngOnInit() {
     if (isPlatformBrowser(this.platformId)) {
       const savedTheme = localStorage.getItem('theme');
-      const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
-      
+      const prefersDark = window.matchMedia(
+        '(prefers-color-scheme: dark)'
+      ).matches;
+
       this.isDark.set(savedTheme === 'dark' || (!savedTheme && prefersDark));
       this.updateTheme();
     }
   }
 
   toggleTheme() {
-    this.isDark.update(current => !current);
+    this.isDark.update((current) => !current);
     this.updateTheme();
   }
 
@@ -60,7 +68,7 @@ export default class HomeComponent implements OnInit {
     if (isPlatformBrowser(this.platformId)) {
       const theme = this.isDark() ? 'dark' : 'light';
       localStorage.setItem('theme', theme);
-      
+
       if (this.isDark()) {
         document.documentElement.classList.add('dark');
       } else {

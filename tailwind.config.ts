@@ -1,15 +1,13 @@
-import { type Config } from 'tailwindcss';
+import type { Config } from 'tailwindcss';
 
 export default {
   content: [
-    "./apps/*/src/**/*.{html,ts,tsx,js,jsx}",
-    "./libs/*/src/**/*.{html,ts,tsx,js,jsx}",
+    './apps/*/src/**/*.{html,ts,tsx,js,jsx}',
+    './libs/*/src/**/*.{html,ts,tsx,js,jsx}',
   ],
   darkMode: 'class',
   theme: {
     extend: {},
   },
-  plugins: [
-    '@tailwindcss/typography',
-  ],
+  plugins: ['@tailwindcss/typography'],
 } satisfies Config;
