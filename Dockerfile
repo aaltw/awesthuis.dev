@@ -21,21 +21,16 @@ FROM nginx:1.28.0-alpine
 # Install curl for health checks
 RUN apk add --no-cache curl
 
-# Create nginx user and group for security (nginx user already exists in nginx image)
-RUN mkdir -p /var/cache/nginx /var/log/nginx /var/run
-
 # Copy built static files
 COPY --from=builder /app/dist/apps/blog/client /usr/share/nginx/html
 
 # Copy custom nginx configuration
 COPY nginx.conf /etc/nginx/nginx.conf
 
-# Set proper permissions
-RUN chown -R nginx:nginx /usr/share/nginx/html && \
-    chown -R nginx:nginx /var/cache/nginx && \
-    chown -R nginx:nginx /var/log/nginx && \
-    chown -R nginx:nginx /var/run && \
-    chown -R nginx:nginx /etc/nginx/conf.d
+# Create directories nginx needs with proper permissions
+RUN mkdir -p /tmp/nginx/client_body /tmp/nginx/proxy /tmp/nginx/fastcgi /tmp/nginx/uwsgi /tmp/nginx/scgi && \
+    chown -R nginx:nginx /usr/share/nginx/html /tmp/nginx /var/cache/nginx /var/log/nginx && \
+    chmod -R 755 /tmp/nginx
 
 # Switch to non-root user
 USER nginx
