@@ -20,7 +20,7 @@ interface BlogPost {
   standalone: true,
   imports: [RouterLink, HeaderComponent, FooterComponent],
   template: `
-    <div class="min-h-screen bg-white dark:bg-gray-900">
+    <div class="min-h-screen bg-white dark:bg-gray-900 flex flex-col">
       <blog-header />
       
       <main class="flex-1">

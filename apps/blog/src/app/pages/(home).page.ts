@@ -9,39 +9,65 @@ import { ThemeService } from '../shared/services/theme.service';
   standalone: true,
   imports: [RouterLink, HeaderComponent, FooterComponent],
   template: `
-    <div class="min-h-screen bg-white dark:bg-gray-900 transition-colors duration-300">
+    <div class="min-h-screen bg-white dark:bg-gray-900 transition-colors duration-300 flex flex-col">
       <blog-header />
       
       <!-- Hero Section -->
       <main class="flex-1">
-        <div class="relative overflow-hidden bg-gradient-to-br from-blue-50 via-white to-indigo-50 dark:from-gray-900 dark:via-gray-900 dark:to-blue-900">
-          <div class="container mx-auto px-4 sm:px-6 lg:px-8 py-20 md:py-32">
-            <div class="text-center">
-              <h1 class="text-5xl md:text-7xl lg:text-8xl font-bold bg-gradient-to-r from-blue-600 via-purple-600 to-blue-800 dark:from-blue-400 dark:via-purple-400 dark:to-blue-300 bg-clip-text text-transparent mb-8">
-                awesthuis.dev
+        <div class="max-w-3xl px-4 mx-auto sm:px-6 xl:max-w-5xl xl:px-0">
+          <div class="divide-y divide-gray-200 dark:divide-gray-700">
+            <div class="space-y-2 pb-8 pt-6 md:space-y-5">
+              <h1 class="text-3xl font-extrabold leading-9 tracking-tight text-gray-900 dark:text-gray-100 sm:text-4xl sm:leading-10 md:text-6xl md:leading-14">
+                Latest
               </h1>
-              <p class="text-xl md:text-2xl text-gray-600 dark:text-gray-300 font-light mb-12 max-w-3xl mx-auto">
-                Personal blog and portfolio
+              <p class="text-lg leading-7 text-gray-500 dark:text-gray-400">
+                Welcome to my blog
               </p>
-              
-              <div class="flex flex-col sm:flex-row gap-4 justify-center">
-                <a 
-                  routerLink="/blog"
-                  class="inline-flex items-center px-8 py-4 text-lg font-medium text-white bg-blue-600 hover:bg-blue-700 rounded-lg transition-colors duration-200 shadow-lg hover:shadow-xl"
-                >
-                  Read the Blog
-                  <svg class="ml-2 w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6"></path>
-                  </svg>
-                </a>
-                
-                <a 
-                  routerLink="/about"
-                  class="inline-flex items-center px-8 py-4 text-lg font-medium text-gray-700 dark:text-gray-300 bg-gray-100 dark:bg-gray-800 hover:bg-gray-200 dark:hover:bg-gray-700 rounded-lg transition-colors duration-200"
-                >
-                  About Me
-                </a>
-              </div>
+            </div>
+            
+            <!-- Blog Posts Preview -->
+            <div class="py-12">
+            <div class="space-y-16">
+              <!-- Sample Blog Post -->
+              <article class="space-y-2 xl:grid xl:grid-cols-4 xl:space-y-0 xl:items-baseline">
+                <dl>
+                  <dt class="sr-only">Published on</dt>
+                  <dd class="text-base font-medium leading-6 text-gray-500 dark:text-gray-400">
+                    <time datetime="2024-01-01">Jan 01, 2024</time>
+                  </dd>
+                </dl>
+                <div class="space-y-5 xl:col-span-3">
+                  <div class="space-y-6">
+                    <div>
+                      <h2 class="text-2xl font-bold leading-8 tracking-tight">
+                        <a routerLink="/blog/welcome" class="text-gray-900 dark:text-gray-100 hover:text-blue-600 dark:hover:text-blue-400">
+                          Welcome to my blog
+                        </a>
+                      </h2>
+                      <div class="flex flex-wrap">
+                        <span class="mr-3 text-sm font-medium uppercase text-blue-600 hover:text-blue-800 dark:text-blue-400 dark:hover:text-blue-300">
+                          Welcome
+                        </span>
+                      </div>
+                    </div>
+                    <div class="prose max-w-none text-gray-500 dark:text-gray-400">
+                      Coming soon - my first blog post!
+                    </div>
+                  </div>
+                  <div class="text-base font-medium leading-6">
+                    <a routerLink="/blog/welcome" class="text-blue-600 hover:text-blue-800 dark:text-blue-400 dark:hover:text-blue-300" aria-label="Read more: Welcome to my blog">
+                      Read more →
+                    </a>
+                  </div>
+                </div>
+              </article>
+            </div>
+            
+            <div class="flex justify-end text-base font-medium leading-6 mt-8">
+              <a routerLink="/blog" class="text-blue-600 hover:text-blue-800 dark:text-blue-400 dark:hover:text-blue-300" aria-label="All posts">
+                All Posts →
+              </a>
+            </div>
             </div>
           </div>
         </div>
