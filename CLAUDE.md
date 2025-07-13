@@ -15,9 +15,12 @@ This is an NX monorepo containing a personal blog/portfolio built with:
 
 ### Blog Application (`apps/blog/`)
 - **File-based routing**: Pages in `src/app/pages/` with naming convention `(route).page.ts`
+- **Dynamic routes**: Use `[slug].page.ts` for parameterized routes
 - **SSR-ready**: Uses `isPlatformBrowser()` checks for browser-only APIs (localStorage, window)
 - **Standalone components**: All components use `imports` array, no modules
 - **Modern Angular syntax**: Uses `@if`/`@for` instead of `*ngIf`/`*ngFor`
+- **Shared services**: Theme service for dark/light mode state management
+- **Component structure**: Reusable header/footer components for consistent layout
 
 ### Styling Architecture
 - **Tailwind v4 setup**: Uses `@import "tailwindcss"` in `styles.css` (not `@tailwind` directives)
@@ -49,7 +52,6 @@ npm run lint:fix            # Auto-fix linting and formatting issues
 npm run format              # Format code only
 nx lint blog                # Lint specific blog application
 nx lint:fix blog            # Auto-fix specific blog application
-nx test blog                # Run tests with Vitest
 ```
 
 ### Docker
@@ -92,6 +94,36 @@ npm run docker:run         # Run container on port 8080
 - **Primary documentation**: https://github.com/tailwindlabs/tailwindcss.com/tree/main/src/docs
 - Use for Tailwind v4 features, configuration, and utility classes
 
+## Blog Features
+
+### Current Implementation
+- **Homepage**: Hero section with featured posts and modern gradient design
+- **Blog listing**: Paginated post list with search/filter capabilities
+- **Blog post details**: Full article page with navigation and social sharing
+- **About page**: Personal profile with tech stack and social links
+- **Tags page**: Tag cloud with post counts and categorization
+- **Dark/Light theme**: System preference detection with manual toggle
+- **Responsive design**: Mobile-first approach with Tailwind breakpoints
+
+### Page Structure
+```
+/                    # Homepage with featured posts
+/blog                # Blog post listing
+/blog/[slug]         # Individual blog post
+/about               # About page
+/tags                # Tags overview
+```
+
+### Component Architecture
+```
+shared/
+├── services/
+│   └── theme.service.ts         # Theme state management
+└── components/
+    ├── header.component.ts      # Navigation and theme toggle
+    └── footer.component.ts      # Site footer with social links
+```
+
 ## Development Workflow
 - Use conventional commits format
 - Always use Angular 20 modern syntax (not Angular 21)
@@ -99,3 +131,4 @@ npm run docker:run         # Run container on port 8080
 - Ensure SSR compatibility for browser APIs
 - Run `npm run lint:fix` before committing to ensure code quality
 - Test builds before committing changes
+- **No testing framework**: Tests removed to keep the blog simple and focused on content

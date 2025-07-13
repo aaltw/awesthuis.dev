@@ -67,12 +67,6 @@
         "command": "biome format --write apps/blog/src"
       }
     },
-    "test": {
-      "executor": "@analogjs/vitest-angular:test",
-      "options": {
-        "config": "vite.config.ts"
-      }
-    },
     "serve-static": {
       "continuous": true,
       "executor": "@nx/web:file-server",
