@@ -17,7 +17,7 @@
     "@analogjs/platform": "^1.19.1",
     "@analogjs/router": "^1.19.1",
     "@analogjs/trpc": "^0.4.0",
-    "@angular/common": "~20.0.0",
+    "@angular/common": "~20.3.14",
     "@angular/compiler": "~20.0.0",
     "@angular/core": "~20.0.0",
     "@angular/forms": "~20.0.0",
